@@ -29,9 +29,15 @@ type BuffTCPListener struct {
 
 // BuffTCPListenerConfig representss
 type BuffTCPListenerConfig struct {
-	Address  string
+	// Controls how large the largest Message may be. The server will reject any messages whose clients
+	// header size does not match this configuration
+	MaxMessageSize int
+	// Controls the ability to enable logging errors occuring in the library
+	EnableLogging bool
+	// The local address to listen for incoming connections on
+	Address string
+	// The callback to invoke once a full set of message bytes has been received
 	Callback ListenCallback
-	BuffTCPSocketConfig
 }
 
 // NewBuffTCPListener represents

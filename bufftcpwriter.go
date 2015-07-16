@@ -15,21 +15,15 @@ type BuffTCPWriter struct {
 	enableLogging  bool
 }
 
-// BuffTCPSocketConfig represents a set of options that the person building systems ontop of
-// Buffstreams can choose to enable
-type BuffTCPSocketConfig struct {
+// BuffTCPWriterConfig represents
+type BuffTCPWriterConfig struct {
 	// Controls how large the largest Message may be. The server will reject any messages whose clients
 	// header size does not match this configuration
 	MaxMessageSize int
 	// Controls the ability to enable logging errors occuring in the library
 	EnableLogging bool
-}
-
-// BuffTCPWriterConfig represents
-type BuffTCPWriterConfig struct {
 	// Address is the address to connect to for writing streaming messages
 	Address string
-	BuffTCPSocketConfig
 }
 
 // Open represents
@@ -52,7 +46,7 @@ func (btw *BuffTCPWriter) Close() error {
 }
 
 // NewBuffTCPWriter represents
-func NewBuffTCPWriter(cfg BuffTCPWriterConfig) (*BuffTCPWriter, error) {
+func NewBuffTCPWriter(cfg BuffTCPWriterConfig) *BuffTCPWriter {
 	maxMessageSize := DefaultMaxMessageSize
 	// 0 is the default, and the message must be atleast 1 byte large
 	if cfg.MaxMessageSize != 0 {
@@ -64,7 +58,7 @@ func NewBuffTCPWriter(cfg BuffTCPWriterConfig) (*BuffTCPWriter, error) {
 		maxMessageSize: maxMessageSize,
 		headerByteSize: messageSizeToBitLength(maxMessageSize),
 	}
-	return btw, nil
+	return btw
 }
 
 // Write allows you to send a stream of bytes as messages. Each array of bytes
