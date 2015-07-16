@@ -1,12 +1,13 @@
 package main
 
 import (
-	"github.com/StabbyCutyou/buffstreams"
-	"github.com/StabbyCutyou/buffstreams/test/message"
-	"github.com/golang/protobuf/proto"
 	"log"
 	"strconv"
 	"time"
+
+	"github.com/StabbyCutyou/buffstreams"
+	"github.com/StabbyCutyou/buffstreams/test/message"
+	"github.com/golang/protobuf/proto"
 )
 
 // Test client to send a sample payload of data endlessly
