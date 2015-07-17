@@ -11,8 +11,8 @@ package buffstreams
 // 	"github.com/StabbyCutyou/buffstreams"
 // )
 //
-// // DefaultMaxMessageSize is the value that is used if a BuffManagerConfig indicates
-// // a MaxMessageSize of 0
+// DefaultMaxMessageSize is the value that is used if a BuffManagerConfig indicates
+// a MaxMessageSize of 0
 const DefaultMaxMessageSize int = 4096
 
 //
@@ -51,11 +51,13 @@ const DefaultMaxMessageSize int = 4096
 // 	return bm
 // }
 //
-// // FormatAddress is to cover the event that you want/need a programmtically correct way
-// // to format an address/port to use with StartListening or WriteTo
-// func FormatAddress(address string, port string) string {
-// 	return address + ":" + port
-// }
+
+// FormatAddress is to cover the event that you want/need a programmtically correct way
+// to format an address/port to use with StartListening or WriteTo
+func FormatAddress(address string, port string) string {
+	return address + ":" + port
+}
+
 //
 // // StartListening is an asyncrhonous, non-blocking method. It begins listening on the given
 // // port, and fire off a goroutine for every client connection it receives. That goroutine will
