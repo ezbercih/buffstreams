@@ -29,6 +29,9 @@ func main() {
 	}
 	count := 0
 	btw := buffstreams.NewBuffTCPWriter(cfg)
+	if err := btw.Open(); err != nil {
+		log.Fatal(err)
+	}
 	currentTime := time.Now()
 	lastTime := currentTime
 	for {

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"log"
 	"strconv"
 	"time"
 
@@ -26,7 +27,10 @@ func main() {
 	}
 
 	btl := buffstreams.NewBuffTCPListener(cfg)
-	btl.StartListeningAsync()
-	// Need to block until ctrl+c, but having trouble getting signal trapping to work on OSX...
-	time.Sleep(time.Minute * 10)
+	if err := btl.StartListening(); err != nil {
+		log.Print(err)
+	} else {
+		// Need to block until ctrl+c, but having trouble getting signal trapping to work on OSX...
+		time.Sleep(time.Minute * 10)
+	}
 }

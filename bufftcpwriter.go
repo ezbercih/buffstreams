@@ -57,6 +57,7 @@ func NewBuffTCPWriter(cfg BuffTCPWriterConfig) *BuffTCPWriter {
 		enableLogging:  cfg.EnableLogging,
 		maxMessageSize: maxMessageSize,
 		headerByteSize: messageSizeToBitLength(maxMessageSize),
+		address:        cfg.Address,
 	}
 	return btw
 }

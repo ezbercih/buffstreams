@@ -53,6 +53,7 @@ func NewBuffTCPListener(cfg BuffTCPListenerConfig) *BuffTCPListener {
 		headerByteSize:  messageSizeToBitLength(maxMessageSize),
 		callback:        cfg.Callback,
 		shutdownChannel: make(chan (bool), 1),
+		address:         cfg.Address,
 	}
 
 	return btl
